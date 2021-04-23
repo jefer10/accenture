@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.repository.entity.Factura;
+
 import com.example.demo.service.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/factura")
@@ -27,13 +29,9 @@ public class FacturaController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@PathVariable("id")int id){
-        try{
-            facturaService.delete(id);
-            return new ResponseEntity(HttpStatus.OK);
-        }catch (Error error){
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Factura> delete(@PathVariable("id")int id){
+        return new ResponseEntity<>(facturaService.delete(id),HttpStatus.OK);
+
     }
 
     @GetMapping("/all")

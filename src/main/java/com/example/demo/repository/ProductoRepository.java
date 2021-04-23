@@ -31,4 +31,8 @@ public class ProductoRepository {
         return !productoCrud.existsById(id);
     }
 
+    public void deleteMany(List<Producto>productos){
+        productoCrud.deleteAll(productos);
+    }
+
 }

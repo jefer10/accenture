@@ -1,5 +1,6 @@
 package com.example.demo.repository.entity;
 
+
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
@@ -44,12 +45,15 @@ public class Cliente {
         this.direccion = dirreccion;
     }
 
-    /*
-    public List<Factura> getFacturas() {
-        return facturas;
-    }
-    */
     public void setFacturas(List<Factura> facturas) {
         this.facturas = facturas;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", cedula=" + cedula +
+                ", direccion='" + direccion + '\'' +"}";
     }
 }

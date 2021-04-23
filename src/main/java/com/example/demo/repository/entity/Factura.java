@@ -1,9 +1,7 @@
 package com.example.demo.repository.entity;
 
-import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,8 +15,8 @@ public class Factura {
     @OneToMany(mappedBy = "factura")
     private List<Producto> productos;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "cliente_id")
+    @ManyToOne
+    @JoinColumn(name = "cliente_id",insertable = true, updatable = false)
     private Cliente cliente;
 
     private Double compra;
@@ -90,5 +88,20 @@ public class Factura {
 
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Factura{" +
+                "id=" + id +
+                ", productos=" + productos +
+                ", cliente=" + cliente +
+                ", compra=" + compra +
+                ", iva=" + iva +
+                ", domicilio=" + domicilio +
+                ", total=" + total +
+                ", fecha=" + fecha +
+                '}';
     }
 }

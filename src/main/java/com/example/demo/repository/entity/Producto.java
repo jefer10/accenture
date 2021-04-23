@@ -13,7 +13,7 @@ public class Producto {
     private Double valor;
 
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "factura_id")
     private Factura factura;
 
